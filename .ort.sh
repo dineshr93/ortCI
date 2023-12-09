@@ -1,8 +1,6 @@
 SECONDS=0
 reportname=bill-of-materials
 
-
-
 if [[ $1 == "" ]]; then
     echo "=============== Please choose run with below options ==============="
     echo "1. bash .ort.sh scan  -> to initiate new scan"
