@@ -19,6 +19,14 @@ else
         echo "=============== Stage 0: Clean previous .ort folder ==============="
         rm -rf .ort
     fi
+    if [ -d *"NOTICE_"* ]; then
+        echo "=============== Stage 0: Clean previous report folder ==============="
+        rm -rf *"NOTICE_"*
+    fi
+    if [ -d *"bom.spdx"* ]; then
+        echo "=============== Stage 0: Clean previous report folder ==============="
+        rm -rf *"bom.spdx"*
+    fi
     echo "=============== Stage 1: ORT Analyze ==============="
     ort analyze --input-dir=. --output-dir=.ort
     duration=$SECONDS
