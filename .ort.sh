@@ -1,5 +1,10 @@
 SECONDS=0
 reportname=bill-of-materials
+
+    echo "==========================================================================================================="
+    echo "| Ensure ort and scancode is installed otherwise its waste of time you can do ctrl+c to cancel this script |"
+    echo "==========================================================================================================="
+
 if [[ $1 == "report" ]]; then
     if [ -d $reportname ]; then
         echo "=============== Stage 0: Clean previous report folder ==============="
@@ -42,8 +47,8 @@ else
     echo "| Rectify the error present in .ort/scan-report-web-app.html and run '.ort.sh report' to get final report |"
     echo "==========================================================================================================="
 
-    if [ -f ".ort/scan-report-web-app.html" ]; then
-        echo "=============== Opening .ort/scan-report-web-app.html ==============="
-        open .ort/scan-report-web-app.html
-    fi
+    #if [ -f ".ort/scan-report-web-app.html" ]; then
+    #    echo "=============== Opening .ort/scan-report-web-app.html ==============="
+    #    open .ort/scan-report-web-app.html
+    #fi
 fi
