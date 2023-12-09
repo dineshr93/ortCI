@@ -5,11 +5,10 @@ reportname=bill-of-materials
 
 if [[ $1 == "" ]]; then
     echo "=============== Please choose run with below options ==============="
-    echo "bash .ort.sh scan to initiate new scan"
-    echo "bash .ort.sh debug to get the report for debug"
-    echo "bash .ort.sh bom to get bill of materials"
-    ort report --ort-file=.ort/evaluation-result.yml --output-dir=.ort --report-formats="WebApp,HtmlTemplate"
-    #"CtrlXAutomation,CycloneDx,DocBookTemplate,EvaluatedModel,FossId,FossIdSnippet,GitLabLicenseModel,HtmlTemplate,ManPageTemplate,Opossum,PdfTemplate,PlainTextTemplate,SpdxDocument,StaticHtml,TrustSource,WebApp"
+    echo "1. bash .ort.sh scan  -> to initiate new scan"
+    echo "2. bash .ort.sh debug -> to get the report for debug"
+    echo "3. bash .ort.sh bom   -> to get bill of materials"
+    
 fi
 
 if [[ $1 == "debug" ]]; then
