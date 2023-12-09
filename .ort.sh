@@ -20,7 +20,7 @@ if [[ $1 == "debug" ]]; then
     echo "======================================================================="
     echo "| Rectify the error present in .ort/scan-report-web-app.html          |"
     echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html |"
-	echo "| run '.ort.sh report' to get final report                            |"
+	echo "| run 'bash .ort.sh report' to get final report                            |"
     echo "======================================================================="
 fi
 
@@ -70,7 +70,7 @@ if [[ $1 == "scan" ]]; then
     echo "======================================================================="
     echo "| Rectify the error present in .ort/scan-report-web-app.html          |"
     echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html |"
-	echo "| run '.ort.sh report' to get final report                            |"
+	echo "| run 'bash .ort.sh report' to get final report                            |"
     echo "======================================================================="
 
     #if [ -f ".ort/scan-report-web-app.html" ]; then
