@@ -1,18 +1,41 @@
 SECONDS=0
 reportname=bill-of-materials
 
-    echo "==========================================================================================================="
-    echo "| Ensure ort and scancode is installed otherwise its waste of time you can do ctrl+c to cancel this script |"
-    echo "==========================================================================================================="
 
-if [[ $1 == "report" ]]; then
+
+if [[ $1 == "" ]]; then
+    echo "=============== Please choose run with below options ==============="
+    echo "bash .ort.sh scan to initiate new scan"
+    echo "bash .ort.sh debug to get the report for debug"
+    echo "bash .ort.sh bom to get bill of materials"
+    ort report --ort-file=.ort/evaluation-result.yml --output-dir=.ort --report-formats="WebApp,HtmlTemplate"
+    #"CtrlXAutomation,CycloneDx,DocBookTemplate,EvaluatedModel,FossId,FossIdSnippet,GitLabLicenseModel,HtmlTemplate,ManPageTemplate,Opossum,PdfTemplate,PlainTextTemplate,SpdxDocument,StaticHtml,TrustSource,WebApp"
+fi
+
+if [[ $1 == "debug" ]]; then
+
+    echo "=============== Stage 5: ORT Debug Report ==============="
+    ort report --ort-file=.ort/evaluation-result.yml --output-dir=.ort --report-formats="WebApp,HtmlTemplate"
+    #"CtrlXAutomation,CycloneDx,DocBookTemplate,EvaluatedModel,FossId,FossIdSnippet,GitLabLicenseModel,HtmlTemplate,ManPageTemplate,Opossum,PdfTemplate,PlainTextTemplate,SpdxDocument,StaticHtml,TrustSource,WebApp"
+
+    echo "===================================================================================================================="
+    echo "| Rectify the error present in .ort/scan-report-web-app.html  and run '.ort.sh report' to get final report         |"
+    echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html  and run '.ort.sh report' to get final report|"
+    echo "===================================================================================================================="
+fi
+
+if [[ $1 == "bom" ]]; then
     if [ -d $reportname ]; then
-        echo "=============== Stage 0: Clean previous report folder ==============="
+        echo "=============== Stage 0: Clean previous $reportname folder ==============="
         rm -rf $reportname
     fi
     ort report --ort-file=.ort/evaluation-result.yml --output-dir=$reportname --report-formats="PlainTextTemplate,SpdxDocument" -O "PlainTextTemplate=template.id=NOTICE_SUMMARY"
     #"CtrlXAutomation,CycloneDx,DocBookTemplate,EvaluatedModel,FossId,FossIdSnippet,GitLabLicenseModel,HtmlTemplate,ManPageTemplate,Opossum,PdfTemplate,PlainTextTemplate,SpdxDocument,StaticHtml,TrustSource,WebApp"
-else
+fi
+if [[ $1 == "scan" ]]; then
+    echo "==========================================================================================================="
+    echo "| Ensure ort and scancode is installed otherwise its waste of time you can do ctrl+c to cancel this script |"
+    echo "==========================================================================================================="
     if [ -d $reportname ]; then
         echo "=============== Stage 0: Clean previous report folder ==============="
         rm -rf $reportname
@@ -39,13 +62,14 @@ else
     duration=$SECONDS
     echo "until ort evaluate $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
     echo "=============== Stage 5: ORT Report ==============="
-    ort report --ort-file=.ort/evaluation-result.yml --output-dir=.ort --report-formats="WebApp"
+    ort report --ort-file=.ort/evaluation-result.yml --output-dir=.ort --report-formats="WebApp,HtmlTemplate"
     duration=$SECONDS
     echo "until ort report $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 
-    echo "==========================================================================================================="
-    echo "| Rectify the error present in .ort/scan-report-web-app.html and run '.ort.sh report' to get final report |"
-    echo "==========================================================================================================="
+    echo "===================================================================================================================="
+    echo "| Rectify the error present in .ort/scan-report-web-app.html  and run '.ort.sh report' to get final report         |"
+    echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html  and run '.ort.sh report' to get final report|"
+    echo "===================================================================================================================="
 
     #if [ -f ".ort/scan-report-web-app.html" ]; then
     #    echo "=============== Opening .ort/scan-report-web-app.html ==============="
