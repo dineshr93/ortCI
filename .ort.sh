@@ -13,14 +13,15 @@ fi
 
 if [[ $1 == "debug" ]]; then
 
-    echo "=============== Stage 5: ORT Debug Report ==============="
+    echo "=============== ORT Debug Report ==============="
     ort report --ort-file=.ort/evaluation-result.yml --output-dir=.ort --report-formats="WebApp,HtmlTemplate"
     #"CtrlXAutomation,CycloneDx,DocBookTemplate,EvaluatedModel,FossId,FossIdSnippet,GitLabLicenseModel,HtmlTemplate,ManPageTemplate,Opossum,PdfTemplate,PlainTextTemplate,SpdxDocument,StaticHtml,TrustSource,WebApp"
 
-    echo "===================================================================================================================="
-    echo "| Rectify the error present in .ort/scan-report-web-app.html  and run '.ort.sh report' to get final report         |"
-    echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html  and run '.ort.sh report' to get final report|"
-    echo "===================================================================================================================="
+    echo "======================================================================="
+    echo "| Rectify the error present in .ort/scan-report-web-app.html          |"
+    echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html |"
+	echo "| run '.ort.sh report' to get final report                            |"
+    echo "======================================================================="
 fi
 
 if [[ $1 == "bom" ]]; then
@@ -28,6 +29,7 @@ if [[ $1 == "bom" ]]; then
         echo "=============== Stage 0: Clean previous $reportname folder ==============="
         rm -rf $reportname
     fi
+	echo "=============== ORT Final Report ==============="
     ort report --ort-file=.ort/evaluation-result.yml --output-dir=$reportname --report-formats="PlainTextTemplate,SpdxDocument" -O "PlainTextTemplate=template.id=NOTICE_SUMMARY"
     #"CtrlXAutomation,CycloneDx,DocBookTemplate,EvaluatedModel,FossId,FossIdSnippet,GitLabLicenseModel,HtmlTemplate,ManPageTemplate,Opossum,PdfTemplate,PlainTextTemplate,SpdxDocument,StaticHtml,TrustSource,WebApp"
 fi
@@ -60,15 +62,16 @@ if [[ $1 == "scan" ]]; then
     ort evaluate --ort-file=.ort/advisor-result.yml --output-dir=.ort
     duration=$SECONDS
     echo "until ort evaluate $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
-    echo "=============== Stage 5: ORT Report ==============="
+    echo "=============== Stage 5: ORT Debug Report ==============="
     ort report --ort-file=.ort/evaluation-result.yml --output-dir=.ort --report-formats="WebApp,HtmlTemplate"
     duration=$SECONDS
     echo "until ort report $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 
-    echo "===================================================================================================================="
-    echo "| Rectify the error present in .ort/scan-report-web-app.html  and run '.ort.sh report' to get final report         |"
-    echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html  and run '.ort.sh report' to get final report|"
-    echo "===================================================================================================================="
+    echo "======================================================================="
+    echo "| Rectify the error present in .ort/scan-report-web-app.html          |"
+    echo "| Rectify the error present in .ort/AsciiDoc_disclosure_document.html |"
+	echo "| run '.ort.sh report' to get final report                            |"
+    echo "======================================================================="
 
     #if [ -f ".ort/scan-report-web-app.html" ]; then
     #    echo "=============== Opening .ort/scan-report-web-app.html ==============="
