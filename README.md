@@ -11,3 +11,8 @@ $ bash .ort.sh
 3. bash .ort.sh bom   -> to get bill of materials
 
 ```
+
+```
+# Copyright (c) 2023 Dinesh Ravi
+# Apache.2.0
+```
