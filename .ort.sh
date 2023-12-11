@@ -1,3 +1,6 @@
+# Copyright (c) 2023 Dinesh Ravi
+# Apache.2.0
+
 SECONDS=0
 reportname=bill-of-materials
 
